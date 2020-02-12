@@ -1,7 +1,16 @@
 import React from 'react';
 
-const person = () => {
-  return <p>I'm a Person!</p>
+// The props argument can be named anything but it is strongly recommended to use props as the name
+
+// props.children will refer to anything that is within the component open and closing tags
+const person = ( props ) => {
+  return (
+    <div>
+      <p>I'm {props.name} and I am a {props.age} years old.</p>
+      <p>{props.children}</p>
+    </div>
+  )
+
 }
 
 export default person;
