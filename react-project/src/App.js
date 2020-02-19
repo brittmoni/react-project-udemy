@@ -12,6 +12,10 @@ const app = props => {
     otherState: 'some other value'
   });
 
+  const [otherState, setOtherState] = useState('some other value');
+
+  console.log(personState, otherState);
+
   const switchNameHandler = () => {
     // console.log('Was clicked!');
     // Don't do this: this.state.person[0].name = "Tiffany";
@@ -42,4 +46,6 @@ export default app;
 
 // useState is a hook which returns an array with exactly 2 elements and always 2 elements
 
+  // Can have as many useState calls as you want
 
+// When using React hooks, you do not need to use class based components
