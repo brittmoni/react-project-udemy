@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
+import React, { Component, useState } from 'react';
 import './App.css';
 import Person from './Person/Person';
 
-const app = props => {
-  const [ personState, setPersonState ] = useState({
+class App extends Component {
+  state = {
     person: [
       { name: 'Brittany', age: 27 },
       { name: 'Manu', age: 29 },
       { name: 'Stephanie', age: 25}
     ],
     otherState: 'some other value'
-  });
+  };
 
   // const [otherState, setOtherState] = useState('some other value');
 
   // console.log(personState, otherState);
 
-  const switchNameHandler = (newName) => {
+  switchNameHandler = (newName) => {
     // console.log('Was clicked!');
     // Don't do this: this.state.person[0].name = "Tiffany";
-    setPersonState({
+    this.setState({
       person: [
         { name: newName, age: 27 },
         { name: 'Manu', age: 29 },
@@ -28,28 +28,30 @@ const app = props => {
     });
   }
 
+  render () {
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is really working!!</p>
-        <button onClick={switchNameHandler.bind(this, 'Tiffany')}>Switch Name</button>
+        <button onClick={() => this.switchNameHandler('Tiffany!!')}>Switch Name</button>
         <Person 
-          name={personState.person[0].name} 
-          age={personState.person[0].age}/>
+          name={this.state.person[0].name} 
+          age={this.state.person[0].age}/>
         <Person 
-          name={personState.person[1].name} 
-          age={personState.person[1].age}
-          click={switchNameHandler.bind(this, 'Tony!')} >My Hobbies: Racing</Person>
+          name={this.state.person[1].name} 
+          age={this.state.person[1].age}
+          click={this.switchNameHandler.bind(this, 'Tony!')} >My Hobbies: Racing</Person>
         <Person 
-          name={personState.person[2].name} 
-          age={personState.person[2].age}/>
+          name={this.state.person[2].name} 
+          age={this.state.person[2].age}/>
       </div>
     );
+  }
 
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
 }
 
-export default app;
+export default App;
 
 // useState is a hook which returns an array with exactly 2 elements and always 2 elements
 
