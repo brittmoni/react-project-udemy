@@ -16,12 +16,12 @@ const app = props => {
 
   // console.log(personState, otherState);
 
-  const switchNameHandler = () => {
+  const switchNameHandler = (newName) => {
     // console.log('Was clicked!');
     // Don't do this: this.state.person[0].name = "Tiffany";
     setPersonState({
       person: [
-        { name: 'Tiffany', age: 27 },
+        { name: newName, age: 27 },
         { name: 'Manu', age: 29 },
         { name: 'Stephanie', age: 26}
       ]
@@ -32,14 +32,14 @@ const app = props => {
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is really working!!</p>
-        <button onClick={switchNameHandler}>Switch Name</button>
+        <button onClick={switchNameHandler.bind(this, 'Tiffany')}>Switch Name</button>
         <Person 
           name={personState.person[0].name} 
           age={personState.person[0].age}/>
         <Person 
           name={personState.person[1].name} 
           age={personState.person[1].age}
-          click={switchNameHandler} >My Hobbies: Racing</Person>
+          click={switchNameHandler.bind(this, 'Tony!')} >My Hobbies: Racing</Person>
         <Person 
           name={personState.person[2].name} 
           age={personState.person[2].age}/>
