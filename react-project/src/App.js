@@ -5,9 +5,9 @@ import Person from './Person/Person';
 class App extends Component {
   state = {
     persons: [
-      { name: 'Brittany', age: 27 },
-      { name: 'Manu', age: 29 },
-      { name: 'Stephanie', age: 25}
+      { id: 'iehigo', name: 'Brittany', age: 27 },
+      { id: 'fehih', name: 'Manu', age: 29 },
+      { id: 'giehoi', name: 'Stephanie', age: 25}
     ],
     otherState: 'some other value',
     showPersons: false
@@ -40,6 +40,7 @@ class App extends Component {
   }
 
   deletePersonHandler = (personIndex) => {
+    // When updating state, you should update state immutably
     // const persons = this.state.persons.slice();
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
@@ -68,9 +69,10 @@ class App extends Component {
         <div>
           {this.state.persons.map((person, index) => {
             return <Person 
-            click={() => this.deletePersonHandler(index)}
-            name={person.name} 
-            age={person.age} />
+              click={() => this.deletePersonHandler(index)}
+              name={person.name} 
+              age={person.age}
+              key={person.id} />
           })}
         </div>
       );
